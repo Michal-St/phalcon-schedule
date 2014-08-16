@@ -4,9 +4,9 @@ phalcon-schedule
 Schedule and Datetime module for Phalcon Framework
 
 In my projects the application logic often depends on the time. For example some
-forms can be avaible in specified period or some views needs to change after competition.
+forms can be avaible in specified period or some views need to change after competition.
 Moreover projects managers and testers woud like to change application time.
-This modules can do this in easy way. For each enviroment developer can
+This modules can do this in an easy way. For each enviroment developer can
 set custom datetime.
 
 ===
@@ -25,7 +25,7 @@ in index.php set global var with your enviroment
     define('APP_ENVIROMENT', getenv('AppEnviroment'));
 ```
 
-or if you don't have set enviroment in VirtualHost
+or if your enviroment in VirtualHost is not set: 
 
 ```php
     define('APP_ENVIROMENT', 'development');
@@ -79,12 +79,12 @@ add schedule to DI
 
 ### Usage
 
-Each of schedule point has start and end time, so it might have one of three status:
+Each of schedule point has start and end time, so it can have one of three status:
 - before
 - active
 - after
 
-Also each schedule point has own type so we can configurate many points with different types.
+Also each schedule point has it's own type so we can configurate many points with different types.
 Class \Modules\Schedule has two major methods:
 
 - getByType($type) - get all schedule points with the same type
@@ -104,6 +104,22 @@ when we choose interesting schedule points we can move between them using method
 
 
 ### Examples
+//insert testing
+
+```php
+-- ----------------------------
+--  Records of `schedule`
+-- ----------------------------
+BEGIN;
+INSERT INTO `schedule` VALUES 
+('1', 'competition', 'photo-upload', '2014-07-22 00:00:00', '2014-07-22 23:59:59'), 
+('2', 'competition', 'moderator-accept', '2014-07-23 00:00:00', '2014-07-31 23:59:59'), 
+('3', 'competition', 'voting', '2014-08-01 00:00:00', '2014-08-16 23:59:59'),
+('4', 'promoCode', 'show sales codes', '2014-08-01 00:00:00', '2014-08-01 20:00:00');
+COMMIT;
+
+SET FOREIGN_KEY_CHECKS = 1;
+```
 
 //Check promo code time
 
@@ -112,7 +128,7 @@ when we choose interesting schedule points we can move between them using method
     $showPromoCodes = $schedule->getByType('promoCode')->getFirst()->isActive();
 ```
 
-//vouting schedule validator
+//voting schedule validator
 ```php
     
     ...
@@ -121,15 +137,17 @@ when we choose interesting schedule points we can move between them using method
     $votingSchedulePoint = $schedule->getByType('competition')->getLast();
 
     if($votingSchedulePoint->isBefore())
-        $message = 'You aren't able to vote before: '.$votingSchedulePoint->getStart();
+        $message = "You aren't able to vote before: ".$votingSchedulePoint->getStart();
 
     if($votingSchedulePoint->isActive())
-        $message = 'Thank's for voting';
+        $message = "Thank's for voting";
 
     if($votingSchedulePoint->isAfter())
-        $message = 'Voting time is over';
+        $message = "Voting time is over";
 
     ...
+
 ```
+
 
 I encourage you to clone repo and test it :)
