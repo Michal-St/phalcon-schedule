@@ -104,7 +104,7 @@ when we choose interesting schedule points we can move between them using method
 
 
 ### Examples
-//insert testing
+Insert testing values
 
 ```php
 -- ----------------------------
@@ -120,15 +120,16 @@ COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
 ```
+![](/preview.png)
 
-//Check promo code time
+Check promo code time
 
 ```php
     $schedule = $this->getDi()->get('schedule');
     $showPromoCodes = $schedule->getByType('promoCode')->getFirst()->isActive();
 ```
 
-//voting schedule validator
+Voting schedule validator
 ```php
     
     ...
@@ -140,7 +141,7 @@ SET FOREIGN_KEY_CHECKS = 1;
         $message = "You aren't able to vote before: ".$votingSchedulePoint->getStart();
 
     if($votingSchedulePoint->isActive())
-        $message = "Thank's for voting";
+        $message = "Thanks for voting";
 
     if($votingSchedulePoint->isAfter())
         $message = "Voting time is over";
@@ -148,6 +149,8 @@ SET FOREIGN_KEY_CHECKS = 1;
     ...
 
 ```
+
+If you want to test the application you just need to change datetime configuration for your enviroment.
 
 
 I encourage you to clone repo and test it :)
