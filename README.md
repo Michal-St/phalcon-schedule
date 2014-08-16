@@ -120,7 +120,7 @@ COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
 ```
-![](/preview.png)
+![](/preview.jpg)
 
 Check promo code time
 
