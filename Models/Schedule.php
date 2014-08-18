@@ -1,10 +1,8 @@
 <?php
-
 /*
  * Copyright 2014 Michał Strzelczyk
  * mail: kontakt@michalstrzelczyk.pl
  */
-
 namespace Modules\Models;
 
 class Schedule extends \Phalcon\Mvc\Model
@@ -44,7 +42,7 @@ class Schedule extends \Phalcon\Mvc\Model
      * Method to set the value of field slide_id
      *
      * @param integer $schedule_id
-     * @return Nucleo\Models\Schedle;
+     * @return Modules\Models\Schedle;
      */
     public function setScheduleId($schedule_id)
     {
@@ -54,10 +52,10 @@ class Schedule extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Ustawia date poczatkowa
+     * Set schedule point start time
      * 
      * @param type $start
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function setStart($start)
     {
@@ -67,10 +65,10 @@ class Schedule extends \Phalcon\Mvc\Model
     }
     
     /**
-     * Ustawia date koncowa
+     * Set schedule point end time
      * 
      * @param type $end
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function setEnd($end)
     {
@@ -80,10 +78,10 @@ class Schedule extends \Phalcon\Mvc\Model
     }
     
     /**
-     * Ustawia nazwe
+     * Set schedule point name
      * 
      * @param type $name
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function setName($name)
     {
@@ -93,10 +91,10 @@ class Schedule extends \Phalcon\Mvc\Model
     }
     
     /**
-     * Ustawia typ
+     * Set schedule point type
      * 
      * @param type $type
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function setType($type)
     {
@@ -106,8 +104,6 @@ class Schedule extends \Phalcon\Mvc\Model
     }
     
     /**
-     * Zwraca id
-     * 
      * @return type
      */
     public function getScheduleId()
@@ -116,8 +112,6 @@ class Schedule extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Zwraca date rozpoczecia
-     * 
      * @return type
      */
     public function getStart()
@@ -126,8 +120,6 @@ class Schedule extends \Phalcon\Mvc\Model
     }
     
     /**
-     * Zwraca date zakonczenia
-     * 
      * @return type
      */
     public function getEnd()
@@ -136,8 +128,6 @@ class Schedule extends \Phalcon\Mvc\Model
     }
     
     /**
-     * Zwraca nazwe
-     *
      * @return string
      */
     public function getName()
@@ -146,8 +136,6 @@ class Schedule extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Zwraca typ
-     *
      * @return string
      */
     public function getType()
@@ -170,7 +158,7 @@ class Schedule extends \Phalcon\Mvc\Model
     }
 
     /**
-     * Czy punkt jest aktywny
+     * Is point active
      * 
      * @return type
      */
@@ -180,7 +168,7 @@ class Schedule extends \Phalcon\Mvc\Model
     }
     
     /**
-     * Czy punkt jest przed
+     * Is point before
      * 
      * @return type
      */
@@ -190,7 +178,7 @@ class Schedule extends \Phalcon\Mvc\Model
     }
     
     /**
-     * Czy punkt jest aktywny
+     * Is active point
      * 
      * @return type
      */
@@ -200,7 +188,7 @@ class Schedule extends \Phalcon\Mvc\Model
     }
     
     /**
-     * Zwraca status
+     * Return status: before, active, after
      * 
      * @return string
      */

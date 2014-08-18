@@ -1,7 +1,6 @@
 <?php
 
 $config = array(
-    
     /**
      * Config for datetime
      */

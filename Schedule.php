@@ -1,19 +1,10 @@
 <?php
 
 /*
- * Copyright 2014 AlterPage Sp. z o.o. licence, Version 1.0;
- * all rights reserved 
- *
- * AlterPage Sp. z o.o. 
- * al. Jana Pawła II 70 lok. 47
- * 00-175 Warsaw, Poland
- * kontakt@alterpage.pl
- * http://alterpage.pl
- *
- * developer: Arrow.
+ * Copyright 2014 Michał Strzelczyk
+ * mail: kontakt@michalstrzelczyk.pl
  */
-
-namespace Nucleo;
+namespace Modules;
 
 class Schedule {
 
@@ -23,20 +14,20 @@ class Schedule {
     public $collection;
     
     /**
-     * Obecny index kolekcji
+     * Current index
      * 
      * @var type 
      */
     private $_index = 0;
 
     /**
-     * Pobiera wszystkie punkty harmonogramu
+     * Get all schedule points by type
      * 
-     * @param type $type
-     * @return \Nucleo\Schedule
+     * @param string $type
+     * @return \Modules\Schedule
      */
     public function getByType($type) {
-        $this->collection = \Nucleo\Models\Schedule::query()
+        $this->collection = \Modules\Models\Schedule::query()
                 ->where("type = :type:")
                 ->bind(array(
                     "type" => $type
@@ -49,13 +40,13 @@ class Schedule {
     }
 
     /**
-     * Pobiera wszystkie punkty na podstawie daty
+     * Get all schedule points by type
      * 
-     * @param type $datetime
-     * @return \Nucleo\Schedule
+     * @param string $datetime
+     * @return \Modules\Schedule
      */
     public function getByDate($datetime) {
-        $this->collection = \Nucleo\Models\Schedule::query()
+        $this->collection = \Modules\Models\Schedule::query()
                 ->where("start >= :start:")
                 ->andWhere("end <= :end:")
                 ->bind(array(
@@ -70,7 +61,7 @@ class Schedule {
     }
 
     /**
-     * Zwraca kolekcję
+     * Return all collection
      * 
      * @return \Phalcon\Mvc\Model\Resultset\Simple
      */
@@ -79,9 +70,9 @@ class Schedule {
     }
 
     /**
-     * Zwraca pierwszy element kolekcji
+     * Get first collection element
      * 
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function getFirst() {
         $this->_index = 0;
@@ -92,9 +83,9 @@ class Schedule {
     }
 
     /**
-     * Zwraca ostatni element kolekcji
+     * Get last collection element
      * 
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function getLast() {
         $this->_index = $this->collection->count() - 1;
@@ -105,9 +96,9 @@ class Schedule {
     }
 
     /**
-     * Zwraca kolejny element kolekcji
+     * Get next collection element
      * 
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function getNext() {
         if ($this->collection->offsetExists($this->_index + 1)) {
@@ -119,9 +110,9 @@ class Schedule {
     }
 
     /**
-     * Zwraca poprzedni element kolekcji
+     * Get previous collection element
      * 
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function getPrevious() {
         if ($this->collection->offsetExists($this->_index - 1)) {
@@ -133,9 +124,9 @@ class Schedule {
     }
 
     /**
-     * Zwraca aktualny element kolekcji
+     * Get current collection element
      * 
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function getCurrent() {
         if ($this->collection->offsetExists($this->_index)) 
@@ -145,9 +136,9 @@ class Schedule {
     }
 
     /**
-     * Zwraca aktywny element kolekcji
+     * Get active collection element
      * 
-     * @return \Nucleo\Models\Schedule
+     * @return \Modules\Models\Schedule
      */
     public function getActive() {
         foreach ($this->collection as $schedule) {
